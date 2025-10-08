@@ -26,7 +26,7 @@ public class Order implements Serializable {
 
   private Instant moment;
   
-  private EnumOrder enums;
+  private Integer enums;
 
   @ManyToOne
   @JoinColumn(name = "client_id")
@@ -43,11 +43,11 @@ public class Order implements Serializable {
   }
 
   public EnumOrder getEnums() {
-	return enums;
+	return EnumOrder.valueOf(enums) ;
 }
 
   public void setEnums(EnumOrder enums) {
-	this.enums = enums;
+	this.enums = enums.getCode();
   }
 
   public Long getId() {

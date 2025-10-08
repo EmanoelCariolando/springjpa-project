@@ -13,6 +13,21 @@ public enum EnumOrder {
 	private EnumOrder(int code) {
 		this.code = code;
 	}
+
+	public int getCode() {
+		return code;
+	}
+	
+    public static EnumOrder valueOf(int code){
+    	for(EnumOrder value : EnumOrder.values()) {
+    		if(code == value.getCode()){
+    			return value;
+    		}
+    	
+    	}
+    	
+    	throw new IllegalArgumentException();
+    }
 	
 	
 }
