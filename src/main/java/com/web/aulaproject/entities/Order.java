@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.web.aulaproject.entities.enums.EnumOrder;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,7 +40,7 @@ public class Order implements Serializable {
     this.id = id;
     this.moment = moment;
     this.client = client;
-    this.enums = enums;
+    setEnums(enums);
   }
 
   public EnumOrder getEnums() {

@@ -1,4 +1,4 @@
-package com.web.aulaproject.entities;
+package com.web.aulaproject.entities.enums;
 
 public enum EnumOrder {
 
@@ -26,7 +26,7 @@ public enum EnumOrder {
     	
     	}
     	
-    	throw new IllegalArgumentException();
+    	throw new IllegalArgumentException("Invalid EnumOrder Code");
     }
 	
 	
