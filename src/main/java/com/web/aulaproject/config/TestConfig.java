@@ -9,10 +9,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.web.aulaproject.entities.Category;
 import com.web.aulaproject.entities.Order;
+import com.web.aulaproject.entities.OrderItem;
 import com.web.aulaproject.entities.Product;
 import com.web.aulaproject.entities.User;
 import com.web.aulaproject.entities.enums.EnumOrder;
 import com.web.aulaproject.repositories.CategoryRepository;
+import com.web.aulaproject.repositories.OrderItemRepository;
 import com.web.aulaproject.repositories.OrderRepository;
 import com.web.aulaproject.repositories.ProductRepository;
 import com.web.aulaproject.repositories.UserRepository;
@@ -32,6 +34,9 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private ProductRepository product;
+	
+	@Autowired
+	private OrderItemRepository orderItem;
 
 
 	@Override
@@ -63,6 +68,13 @@ public class TestConfig implements CommandLineRunner {
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
 		categoryRepository.saveAll(Arrays.asList(c1,c2,c3));
 		product.saveAll(Arrays.asList(m1,m2));
+		
+		OrderItem oi1 = new OrderItem(o1,m1,2,m1.getPrice());
+		OrderItem oi2 = new OrderItem(o1,m2,1,m2.getPrice());
+		OrderItem oi3 = new OrderItem(o2,m1,2,m1.getPrice());
+		OrderItem oi4 = new OrderItem(o3,m2,1,m2.getPrice());
+		
+		orderItem.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 	   
 	}
 	
