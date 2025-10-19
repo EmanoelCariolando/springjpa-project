@@ -6,10 +6,10 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.web.aulaproject.entities.enums.EnumOrder;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,11 +34,10 @@ public class Order implements Serializable {
 
   @ManyToOne
   @JoinColumn(name = "client_id")
-  @JsonIgnoreProperties("orders") 
   private User client;
   
-  @OneToMany(mappedBy = "id.order")
-  private Set<OrderItem> items = new HashSet<>();
+  @OneToMany(mappedBy = "id.order", fetch = FetchType.EAGER)
+  private Set<OrderItem> items = new HashSet<>();  
 
   public Order() {}
 
@@ -47,6 +46,10 @@ public class Order implements Serializable {
     this.moment = moment;
     this.client = client;
     setEnums(enums);
+  }
+  
+  public Set<OrderItem> getItems() {
+      return items;
   }
 
   public EnumOrder getEnums() {

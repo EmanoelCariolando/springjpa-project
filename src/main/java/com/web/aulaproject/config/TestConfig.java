@@ -42,6 +42,11 @@ public class TestConfig implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
+		orderItem.deleteAll();
+		orderRepository.deleteAll();
+		product.deleteAll();
+		categoryRepository.deleteAll();
+		userRepository.deleteAll();
 		
 		Product m1 = new Product(null,"CG 160","Year:2003 Color:BLUE" , 20.000 ,"https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202507/20250723/honda-cg-160-titan-s-WMIMAGEM13033079161.jpg");
 		Product m2 = new Product(null,"XRE 300","Year:2018 Color:BLACK" , 30.000 ,"https://s2-autoesporte.glbimg.com/rXpS9Gp2ZoWlT6QE4oZd4Zzp3ik=/0x0:1920x1554/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2017/r/F/DHOqlARLu9E5uHgpuMcw/xre-300-std-preta-3-4-fd.jpg");
