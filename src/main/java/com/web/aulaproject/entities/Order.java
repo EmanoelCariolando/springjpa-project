@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.web.aulaproject.entities.enums.EnumOrder;
 
 import jakarta.persistence.Entity;
@@ -36,10 +37,12 @@ public class Order implements Serializable {
   @JoinColumn(name = "client_id")
   private User client;
   
-  @OneToMany(mappedBy = "id.order", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "id.order")
   private Set<OrderItem> items = new HashSet<>();  
 
-  public Order() {}
+  public Order() {
+
+  }
 
   public Order(Long id, Instant moment, EnumOrder enums ,User client) {
     this.id = id;
@@ -47,7 +50,7 @@ public class Order implements Serializable {
     this.client = client;
     setEnums(enums);
   }
-  
+
   public Set<OrderItem> getItems() {
       return items;
   }
@@ -83,11 +86,13 @@ public class Order implements Serializable {
   public void setClient(User client) {
     this.client = client;
   }
+ 
 
   @Override
   public int hashCode() {
     return Objects.hash(id);
   }
+ 
 
   @Override
   public boolean equals(Object obj) {
