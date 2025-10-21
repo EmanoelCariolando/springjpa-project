@@ -2,16 +2,13 @@ package com.web.aulaproject.config;
 
 import java.time.Instant;
 import java.util.Arrays;
+
+import com.web.aulaproject.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.web.aulaproject.entities.Category;
-import com.web.aulaproject.entities.Order;
-import com.web.aulaproject.entities.OrderItem;
-import com.web.aulaproject.entities.Product;
-import com.web.aulaproject.entities.User;
 import com.web.aulaproject.entities.enums.EnumOrder;
 import com.web.aulaproject.repositories.CategoryRepository;
 import com.web.aulaproject.repositories.OrderItemRepository;
@@ -80,6 +77,10 @@ public class TestConfig implements CommandLineRunner {
 		OrderItem oi4 = new OrderItem(o3,m2,1,m2.getPrice());
 		
 		orderItem.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
+
+		Payment pay1 = new Payment(null, Instant.parse("2010-07-20T21:53:07Z"),o1);
+		o1.setPayment(pay1);
+		orderRepository.save(o1);
 	   
 	}
 	
