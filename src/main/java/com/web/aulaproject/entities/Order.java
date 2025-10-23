@@ -91,7 +91,14 @@ public class Order implements Serializable {
   public void setClient(User client) {
     this.client = client;
   }
- 
+
+  public Double getTotal(){
+    Double sums = 0.0;
+    for(OrderItem x : items){
+      sums += x.getSubTotal();
+    }
+    return sums;
+  }
 
   @Override
   public int hashCode() {

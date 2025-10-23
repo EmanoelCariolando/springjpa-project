@@ -1,5 +1,6 @@
 package com.web.aulaproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -18,6 +19,8 @@ public class Payment implements Serializable {
     private Instant moment;
 
     @OneToOne
+    @MapsId
+    @JsonIgnore
     private Order order;
 
     public Payment(){
@@ -53,6 +56,9 @@ public class Payment implements Serializable {
     public void setOrder(Order order) {
         this.order = order;
     }
+
+
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
